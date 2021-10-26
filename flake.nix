@@ -112,6 +112,14 @@
             nixpkgs.overlays = (developmentOverlays system) ++ [ ];
           };
         };
+
+        fedora = mkHMConf stdUser rec {
+          system = "x86_64-linux";
+          configuration = {
+            imports = coreModules ++ uMods [ "kittynonnixos" ];
+            nixpkgs.overlays = (developmentOverlays system) ++ [ ];
+          };
+        };
       };
 
       # System configurations
