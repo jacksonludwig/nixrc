@@ -4,8 +4,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -20,30 +18,10 @@
       url = "github:nvim-telescope/telescope-fzf-native.nvim";
       flake = false;
     };
-
-    fish-fasd = {
-      url = "github:oh-my-fish/plugin-fasd";
-      flake = false;
-    };
-
-    node2nix.url = "github:samuelludwig/node2nix-flake";
-    composer2nix.url = "github:samuelludwig/composer2nix/flakeify";
-
-    rust-overlay.url = "github:oxalica/rust-overlay";
-
-    php-serenata-language-server = {
-      url = "gitlab:Serenata/Serenata";
-      flake = false;
-    };
-
-    nixGL = {
-      url = "github:guibou/nixGL";
-      flake = false;
-    };
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, nixos-hardware
-    , neovim-nightly-overlay, rust-overlay, node2nix, composer2nix, ... }:
+    , neovim-nightly-overlay, ... }:
     let
       # Import attrs generated from running the `init-repo.sh` script.
       meta = import ./metaInfo.nix;
@@ -82,16 +60,8 @@
       sysMods = modList: toMods "system" modList;
 
       # Terminal needs for every machine.
-      coreModules = uMods [
-        "core"
-        "dev-tools"
-        "nvim"
-        "tmux"
-        "tmuxp"
-        "bashnonnixos"
-        "fish"
-        "starship"
-      ] ++ langMods [ "php" "python" "js" "elixir" "rust" ];
+      coreModules = uMods [ "core" "dev-tools" "nvim" "tmux" "bashnonnixos" ]
+        ++ langMods [ "python" "js" ];
 
       # Currently scuffed sadsad
       telescope-fzf-native-overlay = final: prev: {
@@ -103,18 +73,14 @@
 
       neovimOverlays =
         [ neovim-nightly-overlay.overlay telescope-fzf-native-overlay ];
-      langOverlays = system: [
-        rust-overlay.overlay
-        composer2nix.overlays.${system}
-        node2nix.overlays.${system}
-      ];
+      langOverlays = system:
+        [ ]; # good candidates for this would be stuff like rust-overlay
       developmentOverlays = system: neovimOverlays ++ (langOverlays system);
 
       #
       # Defaults: change these as you'd like.
       #
       stdUser = meta.username;
-      stdTestUser = "${stdUser}-test";
 
       hmConfDefaults = rec {
         system = "x86_64-linux";
@@ -123,7 +89,7 @@
         username = meta.username;
         homeDirectory = meta.homeDir;
         configuration = {
-          imports = coreModules ++ uMods [ ] ++ sysMods [ ];
+          imports = [ ];
           nixpkgs.overlays = (developmentOverlays system);
         };
       };
@@ -139,28 +105,13 @@
 
     in {
       homeManagerConfigurations = {
-
-        # My home machine
-        garuda-desktop = mkHMConf stdUser rec {
+        wsl = mkHMConf stdUser rec {
           system = "x86_64-linux";
           configuration = {
-            imports = coreModules ++ uMods [ "kittynonnixos" ];
+            imports = coreModules ++ uMods [ ];
             nixpkgs.overlays = (developmentOverlays system) ++ [ ];
           };
         };
-
-        # Linux Server config, no graphical client, but uses nerd-fonts, so
-        # whatever terminal you use should support them for the best
-        # experience. This can be used anywhere you just want to have your
-        # terminal-bound-apps-and-data managed.
-        linux-server = mkHMConf stdUser { };
-
-        # The full experience
-        nixosdesktop = mkHMConf stdUser {
-          configuration.imports = coreModules
-            ++ uMods [ "kitty" "discord" "love2d" "bashnixos" "gitgeneral" ];
-        };
-
       };
 
       # System configurations

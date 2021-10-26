@@ -1,9 +1,0 @@
-session_name: 3-panes
-windows:
-- window_name: dev window
-  layout: main-horizontal
-  shell_command_before:
-    - cd ~/
-  panes:
-    - echo hello1
-    - echo hello2

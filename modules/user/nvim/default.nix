@@ -4,23 +4,17 @@ let
   ts = pkgs.tree-sitter.builtGrammars;
   confRoot = "${modPath.user}/nvim";
 
-  # Not currently working :(
-  #phpLS = { name = "php-serenata-language-server"; src = inputs.php-serenata-language-server; };
-  #phpLS = (pkgs.callPackage ./intelephense-nix { });
-
   languageServers = with pkgs; [
     nodePackages.typescript-language-server
+    nodePackages.vscode-langservers-extracted
     nodePackages.eslint_d
     nodePackages.prettier
     nodePackages.yaml-language-server
-    nodePackages.vscode-json-languageserver
     nodePackages.pyright
     sumneko-lua-language-server
-    (callPackage ./intelephense { inherit pkgs; }).intelephense
   ];
 
   formatters = with pkgs; [
-    php80Packages.phpcbf
     tree-sitter
     stylua
     nixfmt
@@ -43,33 +37,16 @@ let
     "nvim/parser/yaml.so".source = "${ts.tree-sitter-yaml}/parser";
     "nvim/parser/bash.so".source = "${ts.tree-sitter-bash}/parser";
     "nvim/parser/comment.so".source = "${ts.tree-sitter-comment}/parser";
-    "nvim/parser/php.so".source = "${ts.tree-sitter-php}/parser";
   };
 
 in {
-  #
-  # Shell configurations
-  #
   programs.bash = {
     bashrcExtra = ''
       export EDITOR="nvim"
-      alias n="nvim -O"
-    '';
-  };
-
-  programs.fish = {
-    shellAliases.n = "nvim -O";
-    shellInit = ''
-      set -gx EDITOR nvim
     '';
   };
 
   home.packages = with pkgs; [ ] ++ formatters ++ languageServers;
-
-  # Required for lang-servers
-  home.file.".npmrc".text = ''
-    prefix=~/.npm
-  '';
 
   programs.neovim = {
     enable = true;
@@ -80,7 +57,7 @@ in {
     withNodeJs = true;
     withPython3 = true;
     extraConfig = ''
-      lua require('dot')
+      lua require('jackson')
     '';
   };
 
@@ -89,10 +66,10 @@ in {
     "${pkgs.telescope-fzf-native}/build/libfzf.so";
 
   #
-  # Acutal config files
+  # Actual config files
   #
   xdg.configFile = {
-    "nvim/lua/dot/init.lua".source = mkLink.to "${confRoot}/lua/dot/init.lua";
+    "nvim/lua/jackson/init.lua".source = mkLink.to "${confRoot}/lua/jackson/init.lua";
     "nvim/ftplugin/markdown.vim".source =
       mkLink.to "${confRoot}/ftpludin/markdown.vim";
   } // treesitterParsers;

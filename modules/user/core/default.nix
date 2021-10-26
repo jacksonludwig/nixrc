@@ -11,8 +11,6 @@
     texlive.combined.scheme-medium
     corefonts
     vistafonts
-    (callPackage ../../../custom/nonicons-ttf { })
-    # (callPackage ../../../custom/apple-otf { })
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
 

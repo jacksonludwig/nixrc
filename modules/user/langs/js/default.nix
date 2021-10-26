@@ -1,13 +1,9 @@
 { config, pkgs, libs, ... }: {
-  home.packages = with pkgs; [ nodejs node2nix ];
+  home.packages = with pkgs; [ nodejs ];
 
   programs.bash = {
     bashrcExtra = ''
       export PATH=$PATH:~/.npm/bin
     '';
   };
-
-  programs.fish.shellInit = ''
-    set -gx PATH $PATH:~/.npm/bin
-  '';
 }

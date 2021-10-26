@@ -1,7 +1,10 @@
 { config, pkgs, libs, ... }: {
-  home.packages = with pkgs; [
-    lazygit
-    gcc
-  ];
-  programs.fish.shellAliases.gs = "lazygit";
+  programs.bash = {
+    bashrcExtra = ''
+      alias lg="lazygit"
+      alias pandoc="pandoc --pdf-engine=lualatex"
+    '';
+  };
+
+  home.packages = with pkgs; [ lazygit gcc ];
 }
