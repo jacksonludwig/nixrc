@@ -437,7 +437,7 @@ packer.startup(function()
           )
         end,
         flags = {
-          debounce_text_changes = 250,
+          debounce_text_changes = 200,
         },
       })
 
@@ -477,7 +477,7 @@ packer.startup(function()
         end,
         capabilities = common_capabilities,
         flags = {
-          debounce_text_changes = 150,
+          debounce_text_changes = 200,
         },
       })
 
@@ -492,7 +492,7 @@ packer.startup(function()
           },
         },
         flags = {
-          debounce_text_changes = 150,
+          debounce_text_changes = 200,
         },
       })
 
@@ -502,7 +502,7 @@ packer.startup(function()
         end,
         capabilities = common_capabilities,
         flags = {
-          debounce_text_changes = 150,
+          debounce_text_changes = 200,
         },
       })
 
@@ -512,7 +512,7 @@ packer.startup(function()
         end,
         capabilities = common_capabilities,
         flags = {
-          debounce_text_changes = 150,
+          debounce_text_changes = 200,
         },
       })
 
