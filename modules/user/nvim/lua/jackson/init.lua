@@ -307,6 +307,9 @@ packer.startup(function()
         highlight = {
           enable = true,
         },
+        indent = {
+          enable = true,
+        },
       })
     end,
   })
@@ -558,9 +561,7 @@ packer.startup(function()
 
   use({
     "L3MON4D3/LuaSnip",
-    requires = { "rafamadriz/friendly-snippets" },
     config = function()
-      require("luasnip.loaders.from_vscode").load()
       vim.cmd([[
         imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>' 
         inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>
@@ -576,9 +577,9 @@ packer.startup(function()
     config = function()
       local cmp = require("cmp")
       cmp.setup({
-        completion = {
-          autocomplete = false,
-        },
+        -- completion = {
+        --   autocomplete = false,
+        -- },
         snippet = {
           expand = function(args)
             require("luasnip").lsp_expand(args.body)
@@ -590,8 +591,8 @@ packer.startup(function()
         },
         sources = {
           { name = "nvim_lsp" },
-          { name = "buffer" },
           { name = "luasnip" },
+          { name = "buffer", keyword_length = 4 },
         },
         experimental = { ghost_text = true },
       })
