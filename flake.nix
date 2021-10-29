@@ -60,7 +60,7 @@
       sysMods = modList: toMods "system" modList;
 
       # Terminal needs for every machine.
-      coreModules = uMods [ "core" "dev-tools" "nvim" "tmux" "bashnonnixos" ]
+      coreModules = uMods [ "core" "dev-tools" "nvim" "tmux" ]
         ++ langMods [ "python" "js" ];
 
       # Currently scuffed sadsad
@@ -108,7 +108,7 @@
         wsl = mkHMConf stdUser rec {
           system = "x86_64-linux";
           configuration = {
-            imports = coreModules ++ uMods [ ];
+            imports = coreModules ++ uMods [ "bashnonnixos" ];
             nixpkgs.overlays = (developmentOverlays system) ++ [ ];
           };
         };
@@ -116,7 +116,15 @@
         fedora = mkHMConf stdUser rec {
           system = "x86_64-linux";
           configuration = {
-            imports = coreModules ++ uMods [ "kittynonnixos" ];
+            imports = coreModules ++ uMods [ "kittynonnixos" "bashnonnixos" ];
+            nixpkgs.overlays = (developmentOverlays system) ++ [ ];
+          };
+        };
+
+        nixos = mkHMConf stdUser rec {
+          system = "x86_64-linux";
+          configuration = {
+            imports = coreModules ++ uMods [ "kitty" "bashnixos" ];
             nixpkgs.overlays = (developmentOverlays system) ++ [ ];
           };
         };
