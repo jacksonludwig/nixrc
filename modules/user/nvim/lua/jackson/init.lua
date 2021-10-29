@@ -306,7 +306,7 @@ packer.startup(function()
       require("nvim-treesitter.configs").setup({
         highlight = {
           enable = true,
-          additional_vim_regex_highlighting = { "jsx" },
+          additional_vim_regex_highlighting = true,
         },
       })
     end,
