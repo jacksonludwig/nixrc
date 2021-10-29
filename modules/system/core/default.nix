@@ -37,8 +37,8 @@
     git
     vim
     firefox
+    brave
     dropbox
-    # scripts.sysTool
   ];
 
   system.stateVersion = "21.05";
