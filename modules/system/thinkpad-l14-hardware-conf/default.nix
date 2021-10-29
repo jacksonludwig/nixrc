@@ -27,9 +27,5 @@
   #   };
   # };
 
-  # disabled so I can use expo,
-  # should re-enable this
-  networking.firewall.enable = false;
-
   networking.hostName = "nixlen"; # Define your hostname.
 }

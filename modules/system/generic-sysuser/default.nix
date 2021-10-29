@@ -1,10 +1,9 @@
 { config, pkgs, ... }:
 {
-  # Don't worry, its not real...
   users.users.generic = {
-    #isNormalUser = true;
-    #isSystemUser = false;
-    #initialPassword = "########";
-    #extraGroups = [ "wheel" "docker" "networkmanager" "video" ];
+    isNormalUser = true;
+    isSystemUser = false;
+    initialPassword = "password";
+    extraGroups = [ "wheel" "docker" "networkmanager" "video" ];
   };
 }
