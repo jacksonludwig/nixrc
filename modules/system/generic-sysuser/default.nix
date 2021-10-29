@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-  users.users.generic = {
+  users.users.jackson = {
     isNormalUser = true;
     isSystemUser = false;
     initialPassword = "password";
