@@ -41,6 +41,7 @@
     brave
     dropbox
     discord
+    zoom-us
   ];
 
   system.stateVersion = "21.05";
