@@ -35,10 +35,12 @@
   environment.systemPackages = with pkgs; [
     wget
     git
+    tmux
     vim
     firefox
     brave
     dropbox
+    discord
   ];
 
   system.stateVersion = "21.05";

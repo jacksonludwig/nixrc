@@ -30,6 +30,7 @@ packer.startup(function()
 
   use({
     "kristijanhusak/orgmode.nvim",
+    branch = "tree-sitter",
     config = function()
       require("orgmode").setup({
         org_agenda_files = { "~/Dropbox/org/*" },
@@ -49,7 +50,6 @@ packer.startup(function()
       local gl = require("galaxyline")
       local condition = require("galaxyline.condition")
       local gls = gl.section
-      gl.short_line_list = { "NvimTree", "vista_kind", "dbui" }
 
       local custom_filename_sect = {
         provider = function()
@@ -186,22 +186,21 @@ packer.startup(function()
   })
 
   use({
-    "tjdevries/colorbuddy.vim",
     "tjdevries/gruvbuddy.nvim",
-  })
-
-  use({
-    "~/git_repos/vim-earl-grey",
-    requires = { "rktjmp/lush.nvim" },
-    -- config = function()
-    --   vim.cmd("colorscheme vim-earl-grey")
-    --   vim.cmd([[
-    --      hi StatusLine gui=NONE
-    --      hi StatusLine guibg=NONE
-    --      hi StatusLineNC guibg=NONE
-    --      hi StatusLineNC gui=NONE
-    --   ]])
-    -- end,
+    requires = {
+      "tjdevries/colorbuddy.vim",
+    },
+    config = function()
+      require("colorbuddy").colorscheme("gruvbuddy")
+      vim.cmd([[
+        hi MatchParen gui=underline
+        hi StatusLine guibg=NONE
+        hi StatusLine guifg=NONE
+        hi StatusLineNC guibg=NONE
+        hi VertSplit guifg=bg
+        hi VertSplit guibg=darkgrey
+      ]])
+    end,
   })
 
   use({
@@ -642,14 +641,4 @@ augroup Terminal
   autocmd!
   au TermOpen * setlocal nonu nornu signcolumn=no | startinsert
 augroup end
-]])
-
-require("colorbuddy").colorscheme("gruvbuddy")
-vim.cmd([[
-  hi MatchParen gui=underline
-  hi StatusLine guibg=NONE
-  hi StatusLine guifg=NONE
-  hi StatusLineNC guibg=NONE
-  hi VertSplit guifg=bg
-  hi VertSplit guibg=darkgrey
 ]])
