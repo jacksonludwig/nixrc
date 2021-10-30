@@ -10,6 +10,7 @@
     pandoc
     texlive.combined.scheme-medium
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    iosevka
   ];
 
   home.sessionVariables = { TERM = "xterm-256color"; };
