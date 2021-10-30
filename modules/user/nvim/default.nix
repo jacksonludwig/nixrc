@@ -71,6 +71,6 @@ in {
   xdg.configFile = {
     "nvim/lua/jackson/init.lua".source = mkLink.to "${confRoot}/lua/jackson/init.lua";
     "nvim/ftplugin/markdown.vim".source =
-      mkLink.to "${confRoot}/ftpludin/markdown.vim";
+      mkLink.to "${confRoot}/ftplugin/markdown.vim";
   } // treesitterParsers;
 }
