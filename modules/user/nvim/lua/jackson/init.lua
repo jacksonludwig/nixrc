@@ -46,11 +46,12 @@ packer.startup(function()
 
   use({
     "nvim-lualine/lualine.nvim",
+    requires = { "arkav/lualine-lsp-progress" },
     config = function()
       require("lualine").setup({
         options = {
           icons_enabled = false,
-          theme = "gruvbox",
+          theme = "gruvbox-material",
           component_separators = { left = "", right = "" },
           section_separators = { left = "", right = "" },
           disabled_filetypes = {},
@@ -58,9 +59,13 @@ packer.startup(function()
         },
         sections = {
           lualine_a = {},
-          lualine_b = { "branch", { "diagnostics", sources = { "nvim_lsp" } } },
+          lualine_b = { "branch" },
           lualine_c = { { "filename", path = 1 } },
-          lualine_x = { "filetype" },
+          lualine_x = {
+            { "lsp_progress", display_components = { "lsp_client_name", { "title", "percentage", "message" } } },
+            { "diagnostics", sources = { "nvim_lsp" }, colored = false },
+            "filetype",
+          },
           lualine_y = { "progress" },
           lualine_z = { "location" },
         },
@@ -205,7 +210,7 @@ packer.startup(function()
       require("nvim-treesitter.configs").setup({
         highlight = {
           enable = true,
-          additional_vim_regex_highlighting = true,
+          additional_vim_regex_highlighting = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
         },
       })
     end,
