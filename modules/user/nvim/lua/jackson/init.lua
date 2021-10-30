@@ -24,11 +24,6 @@ packer.startup(function()
   })
 
   use({
-    "nvim-lua/popup.nvim",
-    "nvim-lua/plenary.nvim",
-  })
-
-  use({
     "kristijanhusak/orgmode.nvim",
     branch = "tree-sitter",
     config = function()
@@ -111,7 +106,7 @@ packer.startup(function()
 
   use({
     "nvim-telescope/telescope.nvim",
-    requires = { "nvim-telescope/telescope-fzf-native.nvim" },
+    requires = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-fzf-native.nvim" },
     config = function()
       local telescope = require("telescope")
 
