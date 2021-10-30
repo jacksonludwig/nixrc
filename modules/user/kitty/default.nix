@@ -2,13 +2,13 @@
   programs.kitty = {
     enable = true;
     extraConfig = ''
-      # font_family JetBrainsMono Nerd Font
-      font_family Iosevka
+      font_family JetBrainsMono Nerd Font
+      # font_family Iosevka
       bold_font auto
       bold_italic_font auto
       italic_font auto
 
-      font_size 14
+      font_size 12
 
       disable_ligatures always
       map ctrl+shift+t new_tab_with_cwd
