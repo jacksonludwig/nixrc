@@ -16,8 +16,8 @@
 
       enabled_layouts splits
 
-      map F5 launch --location=hsplit
-      map F6 launch --location=vsplit
+      map F5 launch --location=hsplit --cwd=current
+      map F6 launch --location=vsplit --cwd=current
       map F7 layout_action rotate
 
       map shift+up move_window up

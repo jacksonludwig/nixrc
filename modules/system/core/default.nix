@@ -42,6 +42,9 @@
     dropbox
     discord
     zoom-us
+
+    postman
+    mongodb-compass
   ];
 
   system.stateVersion = "21.05";

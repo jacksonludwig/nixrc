@@ -46,7 +46,7 @@ packer.startup(function()
       require("lualine").setup({
         options = {
           icons_enabled = false,
-          theme = "gruvbox-material",
+          theme = "gruvbox",
           component_separators = { left = "", right = "" },
           section_separators = { left = "", right = "" },
           disabled_filetypes = {},
@@ -81,7 +81,7 @@ packer.startup(function()
   use({
     "sainnhe/gruvbox-material",
     config = function()
-      vim.g.gruvbox_material_palette = "mix"
+      vim.g.gruvbox_material_palette = "original"
       vim.cmd("colorscheme gruvbox-material")
     end,
   })
