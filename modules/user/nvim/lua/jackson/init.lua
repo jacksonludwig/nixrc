@@ -53,8 +53,8 @@ packer.startup(function()
           always_divide_middle = true,
         },
         sections = {
-          lualine_a = {},
-          lualine_b = { "branch" },
+          lualine_a = { "branch" },
+          lualine_b = {},
           lualine_c = { { "filename", path = 1 } },
           lualine_x = {
             { "lsp_progress", display_components = { "lsp_client_name", { "title", "percentage", "message" } } },

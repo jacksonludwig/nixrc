@@ -6,7 +6,6 @@
   home.packages = with pkgs; [
     unzip
     ripgrep
-    iosevka
     pandoc
     texlive.combined.scheme-medium
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
