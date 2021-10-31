@@ -2,7 +2,7 @@
   programs.kitty = {
     enable = true;
     extraConfig = ''
-      font_family JetBrainsMono Nerd Font
+      # font_family JetBrainsMono Nerd Font
       # font_family Iosevka
       bold_font auto
       bold_italic_font auto
