@@ -53,23 +53,23 @@ packer.startup(function()
       require("lualine").setup({
         options = {
           icons_enabled = false,
-          theme = "gruvbox",
+          theme = "onenord",
           component_separators = { left = "", right = "" },
           section_separators = { left = "", right = "" },
           disabled_filetypes = {},
           always_divide_middle = true,
         },
         sections = {
-          lualine_a = { "branch" },
-          lualine_b = {},
+          lualine_a = {},
+          lualine_b = { "branch" },
           lualine_c = { { "filename", path = 1 } },
           lualine_x = {
             { "lsp_progress", display_components = { "lsp_client_name", { "title", "percentage", "message" } } },
             { "diagnostics", sources = { "nvim_lsp" }, colored = false },
             "filetype",
           },
-          lualine_y = { "progress" },
-          lualine_z = { "location" },
+          lualine_y = { "progress", "location" },
+          lualine_z = {},
         },
         inactive_sections = {
           lualine_a = {},
@@ -85,31 +85,20 @@ packer.startup(function()
     end,
   })
 
-  use({
-    "ellisonleao/gruvbox.nvim",
-    requires = { "rktjmp/lush.nvim" },
-    config = function()
-      vim.cmd("colorscheme gruvbox")
-    end,
-  })
-
   -- use({
-  --   "tjdevries/gruvbuddy.nvim",
-  --   requires = {
-  --     "tjdevries/colorbuddy.vim",
-  --   },
+  --   "ellisonleao/gruvbox.nvim",
+  --   requires = { "rktjmp/lush.nvim" },
   --   config = function()
-  --     require("colorbuddy").colorscheme("gruvbuddy")
-  --     vim.cmd([[
-  --       hi MatchParen gui=underline
-  --       hi StatusLine guibg=NONE
-  --       hi StatusLine guifg=NONE
-  --       hi StatusLineNC guibg=NONE
-  --       hi VertSplit guifg=bg
-  --       hi VertSplit guibg=darkgrey
-  --     ]])
+  --     vim.cmd("colorscheme gruvbox")
   --   end,
   -- })
+
+  use({
+    "rmehri01/onenord.nvim",
+    config = function()
+      vim.cmd("colorscheme onenord")
+    end,
+  })
 
   use({
     "nvim-telescope/telescope.nvim",
