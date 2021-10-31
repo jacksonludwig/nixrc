@@ -65,7 +65,7 @@ packer.startup(function()
           lualine_c = { { "filename", path = 1 } },
           lualine_x = {
             { "lsp_progress", display_components = { "lsp_client_name", { "title", "percentage", "message" } } },
-            { "diagnostics", sources = { "nvim_lsp" }, colored = false },
+            { "diagnostics", sources = { "nvim_lsp" }, colored = true },
             "filetype",
           },
           lualine_y = { "progress", "location" },
@@ -516,7 +516,7 @@ opt.foldenable = false
 opt.ignorecase = true
 opt.smartcase = true
 opt.inccommand = "nosplit"
-opt.guicursor = ""
+-- opt.guicursor = ""
 
 vim.cmd([[
 augroup YankHighlight
