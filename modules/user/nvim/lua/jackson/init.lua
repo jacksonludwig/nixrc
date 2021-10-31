@@ -40,13 +40,20 @@ packer.startup(function()
   })
 
   use({
+    "chemzqm/vim-jsx-improve",
+    config = function()
+      vim.cmd("autocmd FileType javascript set filetype=javascriptreact")
+    end,
+  })
+
+  use({
     "nvim-lualine/lualine.nvim",
     requires = { "arkav/lualine-lsp-progress" },
     config = function()
       require("lualine").setup({
         options = {
           icons_enabled = false,
-          theme = "gruvbox-material",
+          theme = "gruvbox",
           component_separators = { left = "", right = "" },
           section_separators = { left = "", right = "" },
           disabled_filetypes = {},
@@ -79,10 +86,10 @@ packer.startup(function()
   })
 
   use({
-    "sainnhe/gruvbox-material",
+    "ellisonleao/gruvbox.nvim",
+    requires = { "rktjmp/lush.nvim" },
     config = function()
-      vim.g.gruvbox_material_palette = "mix"
-      vim.cmd("colorscheme gruvbox-material")
+      vim.cmd("colorscheme gruvbox")
     end,
   })
 
