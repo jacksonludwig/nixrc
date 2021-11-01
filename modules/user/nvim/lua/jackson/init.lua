@@ -165,13 +165,13 @@ packer.startup(function()
       )
       vim.api.nvim_set_keymap(
         "n",
-        "<leader>sdd",
+        "<leader>sd",
         "<cmd>lua require('telescope.builtin').lsp_document_diagnostics(require('telescope.themes').get_ivy())<cr>",
         { noremap = true, silent = true }
       )
       vim.api.nvim_set_keymap(
         "n",
-        "<leader>sdw",
+        "<leader>sw",
         "<cmd>lua require('telescope.builtin').lsp_workspace_diagnostics(require('telescope.themes').get_ivy())<cr>",
         { noremap = true, silent = true }
       )
@@ -373,9 +373,7 @@ packer.startup(function()
       })
 
       nvim_lsp.yamlls.setup({
-        on_attach = function(client, bufnr)
-          on_attach_common(client, bufnr)
-        end,
+        on_attach = on_attach_common,
         capabilities = common_capabilities,
         settings = {
           yaml = {
@@ -388,9 +386,7 @@ packer.startup(function()
       })
 
       nvim_lsp.pyright.setup({
-        on_attach = function(client, bufnr)
-          on_attach_common(client, bufnr)
-        end,
+        on_attach = on_attach_common,
         capabilities = common_capabilities,
         flags = {
           debounce_text_changes = 200,
@@ -398,9 +394,7 @@ packer.startup(function()
       })
 
       nvim_lsp.jsonls.setup({
-        on_attach = function(client, bufnr)
-          on_attach_common(client, bufnr)
-        end,
+        on_attach = on_attach_common,
         capabilities = common_capabilities,
         flags = {
           debounce_text_changes = 200,
