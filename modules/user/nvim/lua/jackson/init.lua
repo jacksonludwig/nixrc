@@ -47,16 +47,6 @@ packer.startup(function()
   })
 
   use({
-    "kristijanhusak/orgmode.nvim",
-    config = function()
-      require("orgmode").setup({
-        org_agenda_files = { "~/Dropbox/org/*" },
-        org_default_notes_file = "~/Dropbox/notes.org",
-      })
-    end,
-  })
-
-  use({
     "nvim-lualine/lualine.nvim",
     requires = { "arkav/lualine-lsp-progress" },
     config = function()
@@ -222,6 +212,7 @@ packer.startup(function()
       require("nvim-treesitter.configs").setup({
         highlight = {
           enable = true,
+          disable = { "org" },
           additional_vim_regex_highlighting = {
             "javascript",
             "javascriptreact",
