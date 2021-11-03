@@ -477,7 +477,6 @@ packer.startup(function()
           { name = "luasnip" },
           { name = "buffer", keyword_length = 4 },
         },
-        experimental = { ghost_text = true },
       })
     end,
   })
