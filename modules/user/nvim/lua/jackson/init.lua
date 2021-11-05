@@ -53,7 +53,10 @@ packer.startup(function()
           lualine_b = {},
           lualine_c = { { "filename", path = 1 } },
           lualine_x = {
-            { "lsp_progress", display_components = { "lsp_client_name", { "title", "percentage", "message" } } },
+            {
+              "lsp_progress",
+              display_components = { "lsp_client_name", { "title", "percentage", "message" } },
+            },
             { "diagnostics", sources = { "nvim_lsp" }, colored = true },
             "filetype",
           },
@@ -333,6 +336,7 @@ packer.startup(function()
             update_imports_on_move = true,
 
             filter_out_diagnostics_by_code = { 80001 },
+            filter_out_diagnostics_by_severity = { "hint" },
           })
 
           -- required to fix code action ranges
@@ -456,7 +460,7 @@ packer.startup(function()
         },
         experimental = {
           native_menu = true,
-          ghost_text = true,
+          -- ghost_text = true,
         },
       })
     end,
