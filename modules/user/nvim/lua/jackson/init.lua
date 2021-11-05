@@ -270,7 +270,7 @@ packer.startup(function()
         },
       })
 
-      require("lspconfig")["null-ls"].setup({
+      nvim_lsp["null-ls"].setup({
         on_attach = function(_, bufnr)
           vim.api.nvim_buf_set_keymap(
             bufnr,
@@ -285,6 +285,32 @@ packer.startup(function()
         },
       })
 
+      -- nvim_lsp.eslint.setup({
+      --   on_attach = function(_, bufnr)
+      --     vim.api.nvim_buf_set_keymap(
+      --       bufnr,
+      --       "n",
+      --       "<leader>z",
+      --       "<cmd>EslintFixAll<CR>",
+      --       { noremap = true, silent = true }
+      --     )
+      --   end,
+      --   settings = {
+      --     codeAction = {
+      --       disableRuleComment = {
+      --         enable = false,
+      --         location = "separateLine",
+      --       },
+      --       showDocumentation = {
+      --         enable = false,
+      --       },
+      --     },
+      --   },
+      --   flags = {
+      --     debounce_text_changes = 200,
+      --   },
+      -- })
+
       nvim_lsp.tsserver.setup({
         on_attach = function(client, bufnr)
           on_attach_common(client, bufnr)
@@ -297,6 +323,7 @@ packer.startup(function()
             -- eslint
             eslint_bin = "eslint_d",
             eslint_enable_diagnostics = true,
+            eslint_enable_disable_comments = true,
 
             -- formatting
             enable_formatting = true,
