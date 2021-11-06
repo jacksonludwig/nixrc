@@ -288,31 +288,31 @@ packer.startup(function()
         },
       })
 
-      -- nvim_lsp.eslint.setup({
-      --   on_attach = function(_, bufnr)
-      --     vim.api.nvim_buf_set_keymap(
-      --       bufnr,
-      --       "n",
-      --       "<leader>z",
-      --       "<cmd>EslintFixAll<CR>",
-      --       { noremap = true, silent = true }
-      --     )
-      --   end,
-      --   settings = {
-      --     codeAction = {
-      --       disableRuleComment = {
-      --         enable = false,
-      --         location = "separateLine",
-      --       },
-      --       showDocumentation = {
-      --         enable = false,
-      --       },
-      --     },
-      --   },
-      --   flags = {
-      --     debounce_text_changes = 200,
-      --   },
-      -- })
+      nvim_lsp.eslint.setup({
+        on_attach = function(_, bufnr)
+          vim.api.nvim_buf_set_keymap(
+            bufnr,
+            "n",
+            "<leader>z",
+            "<cmd>EslintFixAll<CR>",
+            { noremap = true, silent = true }
+          )
+        end,
+        settings = {
+          codeAction = {
+            disableRuleComment = {
+              enable = false,
+              location = "separateLine",
+            },
+            showDocumentation = {
+              enable = false,
+            },
+          },
+        },
+        flags = {
+          debounce_text_changes = 200,
+        },
+      })
 
       nvim_lsp.tsserver.setup({
         on_attach = function(client, bufnr)
@@ -325,11 +325,12 @@ packer.startup(function()
 
             -- eslint
             eslint_bin = "eslint_d",
-            eslint_enable_diagnostics = true,
-            eslint_enable_disable_comments = true,
+            eslint_enable_diagnostics = false,
+            eslint_enable_disable_comments = false,
+            eslint_enable_code_actions = false,
 
             -- formatting
-            enable_formatting = true,
+            enable_formatting = false,
             formatter = "eslint_d",
 
             -- update imports on file move
