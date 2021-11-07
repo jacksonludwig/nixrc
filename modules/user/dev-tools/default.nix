@@ -6,5 +6,5 @@
     '';
   };
 
-  home.packages = with pkgs; [ lazygit gcc ];
+  home.packages = with pkgs; [ lazygit gcc awscli2 ];
 }
