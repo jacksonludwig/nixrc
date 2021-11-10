@@ -454,13 +454,13 @@ packer.startup(function()
           ["<C-y>"] = cmp.mapping.confirm({ select = true }),
           ["<C-Space>"] = cmp.mapping.complete(),
         },
-        sources = {
+        sources = cmp.config.sources({
           { name = "nvim_lsp" },
           { name = "luasnip" },
           { name = "buffer", keyword_length = 4 },
-        },
+        }),
         experimental = {
-          native_menu = true,
+          -- native_menu = true,
           -- ghost_text = true,
         },
       })
