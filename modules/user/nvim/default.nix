@@ -7,7 +7,6 @@ let
   languageServers = with pkgs; [
     nodePackages.typescript-language-server
     nodePackages.vscode-langservers-extracted
-    nodePackages.eslint_d
     nodePackages.prettier
     nodePackages.yaml-language-server
     nodePackages.pyright
