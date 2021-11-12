@@ -7,7 +7,4 @@
   services.xserver.desktopManager.pantheon.extraSwitchboardPlugs = [
     pkgs.pantheon-tweaks
   ];
-
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
 }
