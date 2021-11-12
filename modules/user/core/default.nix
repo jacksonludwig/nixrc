@@ -9,7 +9,6 @@
     pandoc
     texlive.combined.scheme-medium
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-    iosevka
     vistafonts
   ];
 }
