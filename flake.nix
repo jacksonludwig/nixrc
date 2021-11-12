@@ -141,7 +141,6 @@
             "generic-sysuser"
             "desktop-hardware-amd-conf"
             "xserver-gnome40"
-            # "pulseaudio"
             "pipewire"
             "nvidia"
             "amd-cpu"

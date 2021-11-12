@@ -1,5 +1,6 @@
 { config, pkgs, ... }: {
-  security.rtkt.enable = true;
+  # security.rtkt.enable = true;
+  hardware.pulseaudio.enable = false;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
