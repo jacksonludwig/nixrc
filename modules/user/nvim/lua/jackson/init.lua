@@ -43,15 +43,15 @@ packer.startup(function()
         options = {
           icons_enabled = false,
           theme = "gruvbox",
-          component_separators = { left = "", right = "" },
+          component_separators = { left = "|", right = "|" },
           section_separators = { left = "", right = "" },
           disabled_filetypes = {},
           always_divide_middle = true,
         },
         sections = {
-          lualine_a = { "branch" },
+          lualine_a = {},
           lualine_b = {},
-          lualine_c = { { "filename", path = 1 } },
+          lualine_c = { "branch", { "filename", path = 1 } },
           lualine_x = {
             {
               "lsp_progress",
@@ -59,9 +59,11 @@ packer.startup(function()
             },
             { "diagnostics", sources = { "nvim_lsp" }, colored = true },
             "filetype",
+            "progress",
+            "location",
           },
-          lualine_y = { "progress" },
-          lualine_z = { "location" },
+          lualine_y = {},
+          lualine_z = {},
         },
         inactive_sections = {
           lualine_a = {},
@@ -260,7 +262,6 @@ packer.startup(function()
       null_ls.config({
         save_after_format = false,
         sources = {
-          -- eslint_d/js/jsx/ts/tsx handled by nvim_ts_utils
           null_ls.builtins.formatting.prettier.with({
             filetypes = { "yaml", "json", "html", "css" },
           }),
@@ -423,7 +424,7 @@ packer.startup(function()
       })
 
       vim.diagnostic.config({
-        virtual_text = false,
+        virtual_text = true,
         signs = true,
         update_in_insert = false,
       })
