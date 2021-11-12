@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ...}:
+{ config, pkgs, lib, ... }:
 
 {
   nix = {
@@ -16,9 +16,7 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  environment.variables = {
-    NIXPKGS_ALLOW_UNFREE="1";
-  };
+  environment.variables = { NIXPKGS_ALLOW_UNFREE = "1"; };
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
