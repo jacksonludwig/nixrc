@@ -95,18 +95,10 @@ packer.startup(function()
   -- })
 
   use({
-    "ThePrimeagen/git-worktree.nvim",
-    config = function()
-      require("git-worktree").setup({})
-    end,
-  })
-
-  use({
     "nvim-telescope/telescope.nvim",
     requires = {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope-fzf-native.nvim",
-      "ThePrimeagen/git-worktree.nvim",
     },
     config = function()
       local telescope = require("telescope")
@@ -130,7 +122,6 @@ packer.startup(function()
       })
 
       telescope.load_extension("fzf")
-      telescope.load_extension("git_worktree")
 
       vim.api.nvim_set_keymap(
         "n",
@@ -178,12 +169,6 @@ packer.startup(function()
         "n",
         "<leader>sw",
         "<cmd>lua require('telescope.builtin').lsp_workspace_diagnostics(require('telescope.themes').get_ivy())<cr>",
-        { noremap = true, silent = true }
-      )
-      vim.api.nvim_set_keymap(
-        "n",
-        "<leader>vb",
-        "<cmd>lua require('telescope').extensions.git_worktree.git_worktrees(require('telescope.themes').get_ivy())<cr>",
         { noremap = true, silent = true }
       )
     end,
@@ -480,7 +465,7 @@ packer.startup(function()
           { name = "buffer", keyword_length = 4 },
         }),
         experimental = {
-          -- native_menu = true,
+          native_menu = true,
           -- ghost_text = true,
         },
       })
