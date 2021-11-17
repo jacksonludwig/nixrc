@@ -25,17 +25,17 @@ let
 
   # (xdg.configFile's)
   treesitterParsers = {
-    "nvim/parser/c.so".source = "${ts.tree-sitter-c}/parser";
-    "nvim/parser/lua.so".source = "${ts.tree-sitter-lua}/parser";
-    "nvim/parser/rust.so".source = "${ts.tree-sitter-rust}/parser";
-    "nvim/parser/python.so".source = "${ts.tree-sitter-python}/parser";
-    "nvim/parser/typescript.so".source = "${ts.tree-sitter-typescript}/parser";
-    "nvim/parser/javascript.so".source = "${ts.tree-sitter-javascript}/parser";
-    "nvim/parser/tsx.so".source = "${ts.tree-sitter-tsx}/parser";
-    "nvim/parser/nix.so".source = "${ts.tree-sitter-nix}/parser";
-    "nvim/parser/yaml.so".source = "${ts.tree-sitter-yaml}/parser";
-    "nvim/parser/bash.so".source = "${ts.tree-sitter-bash}/parser";
-    "nvim/parser/comment.so".source = "${ts.tree-sitter-comment}/parser";
+    # "nvim/parser/c.so".source = "${ts.tree-sitter-c}/parser";
+    # "nvim/parser/lua.so".source = "${ts.tree-sitter-lua}/parser";
+    # "nvim/parser/rust.so".source = "${ts.tree-sitter-rust}/parser";
+    # "nvim/parser/python.so".source = "${ts.tree-sitter-python}/parser";
+    # "nvim/parser/typescript.so".source = "${ts.tree-sitter-typescript}/parser";
+    # "nvim/parser/javascript.so".source = "${ts.tree-sitter-javascript}/parser";
+    # "nvim/parser/tsx.so".source = "${ts.tree-sitter-tsx}/parser";
+    # "nvim/parser/nix.so".source = "${ts.tree-sitter-nix}/parser";
+    # "nvim/parser/yaml.so".source = "${ts.tree-sitter-yaml}/parser";
+    # "nvim/parser/bash.so".source = "${ts.tree-sitter-bash}/parser";
+    # "nvim/parser/comment.so".source = "${ts.tree-sitter-comment}/parser";
   };
 
 in {

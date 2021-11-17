@@ -200,6 +200,19 @@ packer.startup(function()
     "nvim-treesitter/nvim-treesitter",
     config = function()
       require("nvim-treesitter.configs").setup({
+        ensure_installed = {
+          "c",
+          "lua",
+          "rust",
+          "python",
+          "typescript",
+          "javascript",
+          "tsx",
+          "nix",
+          "yaml",
+          "bash",
+          "comment",
+        },
         highlight = {
           enable = true,
           additional_vim_regex_highlighting = {
