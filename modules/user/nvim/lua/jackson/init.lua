@@ -87,13 +87,6 @@ packer.startup(function()
     end,
   })
 
-  -- use({
-  --   "rmehri01/onenord.nvim",
-  --   config = function()
-  --     vim.cmd("colorscheme onenord")
-  --   end,
-  -- })
-
   use({
     "nvim-telescope/telescope.nvim",
     requires = {
