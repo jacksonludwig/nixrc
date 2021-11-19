@@ -183,9 +183,9 @@ packer.startup(function()
           "lua",
           "rust",
           "python",
-          "typescript",
-          "javascript",
-          "tsx",
+          -- "typescript",
+          -- "javascript",
+          -- "tsx",
           "nix",
           "yaml",
           "bash",
@@ -193,12 +193,12 @@ packer.startup(function()
         },
         highlight = {
           enable = true,
-          additional_vim_regex_highlighting = {
-            "javascript",
-            "javascriptreact",
-            "typescript",
-            "typescriptreact",
-          },
+          -- additional_vim_regex_highlighting = {
+          --   "javascript",
+          --   "javascriptreact",
+          --   "typescript",
+          --   "typescriptreact",
+          -- },
         },
       })
     end,
@@ -443,10 +443,10 @@ packer.startup(function()
           { name = "luasnip" },
           { name = "buffer", keyword_length = 4 },
         }),
-        experimental = {
-          native_menu = true,
-          -- ghost_text = true,
-        },
+        -- experimental = {
+        --   native_menu = true,
+        --   ghost_text = true,
+        -- },
       })
     end,
   })
