@@ -42,7 +42,7 @@ packer.startup(function()
       require("lualine").setup({
         options = {
           icons_enabled = false,
-          theme = "gruvbox",
+          theme = "wombat",
           component_separators = { left = "", right = "" },
           section_separators = { left = "", right = "" },
           disabled_filetypes = {},
@@ -79,11 +79,18 @@ packer.startup(function()
     end,
   })
 
+  -- use({
+  --   "ellisonleao/gruvbox.nvim",
+  --   requires = { "rktjmp/lush.nvim" },
+  --   config = function()
+  --     vim.cmd("colorscheme gruvbox")
+  --   end,
+  -- })
+
   use({
-    "ellisonleao/gruvbox.nvim",
-    requires = { "rktjmp/lush.nvim" },
+    "fnune/base16-vim",
     config = function()
-      vim.cmd("colorscheme gruvbox")
+      vim.cmd("colorscheme base16-tomorrow-night")
     end,
   })
 
