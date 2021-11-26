@@ -42,7 +42,7 @@ packer.startup(function()
       require("lualine").setup({
         options = {
           icons_enabled = false,
-          theme = "wombat",
+          theme = "modus-vivendi",
           component_separators = { left = "", right = "" },
           section_separators = { left = "", right = "" },
           disabled_filetypes = {},
@@ -88,9 +88,10 @@ packer.startup(function()
   -- })
 
   use({
-    "fnune/base16-vim",
+    "ishan9299/modus-theme-vim",
     config = function()
-      vim.cmd("colorscheme base16-tomorrow-night")
+      vim.cmd("colorscheme modus-vivendi")
+      vim.cmd("hi NormalNC guibg=bg")
     end,
   })
 
