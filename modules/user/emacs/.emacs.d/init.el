@@ -24,12 +24,13 @@
 
 ;; Set some general settings
 (use-package emacs
+  :hook
+  (prog-mode . display-line-numbers-mode)
   :init
   (tool-bar-mode -1)
   (menu-bar-mode -1)
   (scroll-bar-mode -1)
-  (setq display-line-numbers-type 'relative)
-  (global-display-line-numbers-mode 1))
+  (setq display-line-numbers-type 'relative))
 
 (use-package doom-themes
   :config
@@ -50,6 +51,7 @@
   :init
   (setq evil-want-keybinding nil) ;; no vim insert bindings
   (setq evil-undo-system 'undo-fu)
+  (setq evil-want-C-u-scroll t)
   :config
   (evil-mode 1))
 
@@ -59,3 +61,12 @@
   :config
   (setq evil-want-integration t)
   (evil-collection-init))
+
+(use-package company
+  :after evil
+  :config
+  (setq company-idle-delay nil)
+  (global-set-key (kbd "C-SPC") 'company-complete)
+  (global-company-mode t))
+
+(use-package magit)
