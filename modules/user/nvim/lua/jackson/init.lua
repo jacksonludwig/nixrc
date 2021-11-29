@@ -476,11 +476,12 @@ opt.expandtab = true
 opt.number = true
 opt.relativenumber = true
 opt.mouse = "a"
-opt.completeopt = { "menuone", "noselect" }
+opt.completeopt = { "menu", "menuone", "noselect" }
 opt.foldenable = false
 opt.ignorecase = true
 opt.smartcase = true
 opt.inccommand = "nosplit"
+opt.shortmess:append("c")
 opt.guicursor = ""
 
 vim.cmd([[
