@@ -83,14 +83,6 @@ require("packer").startup(function(use)
     end,
   })
 
-  -- use({
-  --   "ellisonleao/gruvbox.nvim",
-  --   requires = { "rktjmp/lush.nvim" },
-  --   config = function()
-  --     vim.cmd("colorscheme gruvbox")
-  --   end,
-  -- })
-
   use({
     "ishan9299/modus-theme-vim",
     config = function()
