@@ -60,7 +60,7 @@
       sysMods = modList: toMods "system" modList;
 
       # Terminal needs for every machine.
-      coreModules = uMods [ "core" "dev-tools" "nvim" "tmux" ]
+      coreModules = uMods [ "core" "dev-tools" "nvim" "tmux" "emacs" ]
         ++ langMods [ "python" "js" ];
 
       # Currently scuffed sadsad
