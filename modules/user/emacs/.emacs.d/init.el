@@ -55,7 +55,7 @@
   :config
   (evil-mode 1))
 
-;;; Vim Bindings Everywhere else
+;;; Vim Bindings Everywhere else we want
 (use-package evil-collection
   :after evil
   :config
