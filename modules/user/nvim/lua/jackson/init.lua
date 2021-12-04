@@ -83,11 +83,19 @@ require("packer").startup(function(use)
     end,
   })
 
+  -- use({
+  --   "ishan9299/modus-theme-vim",
+  --   config = function()
+  --     vim.cmd("colorscheme modus-vivendi")
+  --     vim.cmd("hi NormalNC guibg=bg")
+  --   end,
+  -- })
+
   use({
-    "ishan9299/modus-theme-vim",
+    "fnune/base16-vim",
+    branch = "41-zenburn-treesitter-highlight-are-missing",
     config = function()
-      vim.cmd("colorscheme modus-vivendi")
-      vim.cmd("hi NormalNC guibg=bg")
+      vim.cmd("colorscheme base16-zenburn")
     end,
   })
 
@@ -213,6 +221,7 @@ require("packer").startup(function(use)
     requires = {
       "jose-elias-alvarez/nvim-lsp-ts-utils",
       "jose-elias-alvarez/null-ls.nvim",
+      "stevearc/dressing.nvim",
     },
     config = function()
       local nvim_lsp = require("lspconfig")
