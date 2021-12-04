@@ -83,14 +83,6 @@ require("packer").startup(function(use)
     end,
   })
 
-  -- use({
-  --   "ishan9299/modus-theme-vim",
-  --   config = function()
-  --     vim.cmd("colorscheme modus-vivendi")
-  --     vim.cmd("hi NormalNC guibg=bg")
-  --   end,
-  -- })
-
   use({
     "fnune/base16-vim",
     branch = "41-zenburn-treesitter-highlight-are-missing",
@@ -98,6 +90,21 @@ require("packer").startup(function(use)
       vim.cmd("colorscheme base16-zenburn")
     end,
   })
+
+  -- use ({
+  --   "VonHeikemen/rubber-themes.vim",
+  --   config = function()
+  --     vim.cmd([[
+  --       colorscheme rubber-enhanced
+
+  --       hi! Normal guibg=#21252B guifg=#ABB2BF
+  --       hi! typescriptTry guifg=#ABB2BF
+  --       hi! typescriptExceptions guifg=#ABB2BF
+  --       hi! typescriptImport guifg=#ABB2BF
+  --       hi! SignColumn guibg=#21252B
+  --     ]])
+  --   end,
+  -- })
 
   use({
     "nvim-telescope/telescope.nvim",
