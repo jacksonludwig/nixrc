@@ -83,17 +83,33 @@ require("packer").startup(function(use)
     end,
   })
 
+  -- use({
+  --   "fnune/base16-vim",
+  --   branch = "41-zenburn-treesitter-highlight-are-missing",
+  --   config = function()
+  --     vim.cmd("colorscheme base16-zenburn")
+  --     vim.cmd([[
+  --       hi Normal guibg=#222222
+  --       hi LineNr guibg=#222222
+  --       hi SignColumn guibg=#222222
+  --       hi VertSplit guibg=bg
+  --     ]])
+  --   end,
+  -- })
+
   use({
-    "fnune/base16-vim",
-    branch = "41-zenburn-treesitter-highlight-are-missing",
+    "catppuccin/nvim",
     config = function()
-      vim.cmd("colorscheme base16-zenburn")
-      vim.cmd([[
-        hi Normal guibg=#222222
-        hi LineNr guibg=#222222
-        hi SignColumn guibg=#222222
-        hi VertSplit guibg=bg
-      ]])
+      require("catppuccin").setup({
+        styles = {
+          comments = "italic",
+          functions = "NONE",
+          keywords = "NONE",
+          strings = "NONE",
+          variables = "NONE",
+        },
+      })
+      vim.cmd("colorscheme catppuccin")
     end,
   })
 
