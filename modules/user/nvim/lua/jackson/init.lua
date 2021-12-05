@@ -88,23 +88,14 @@ require("packer").startup(function(use)
     branch = "41-zenburn-treesitter-highlight-are-missing",
     config = function()
       vim.cmd("colorscheme base16-zenburn")
+      vim.cmd([[
+        hi Normal guibg=#222222
+        hi LineNr guibg=#222222
+        hi SignColumn guibg=#222222
+        hi VertSplit guibg=bg
+      ]])
     end,
   })
-
-  -- use ({
-  --   "VonHeikemen/rubber-themes.vim",
-  --   config = function()
-  --     vim.cmd([[
-  --       colorscheme rubber-enhanced
-
-  --       hi! Normal guibg=#21252B guifg=#ABB2BF
-  --       hi! typescriptTry guifg=#ABB2BF
-  --       hi! typescriptExceptions guifg=#ABB2BF
-  --       hi! typescriptImport guifg=#ABB2BF
-  --       hi! SignColumn guibg=#21252B
-  --     ]])
-  --   end,
-  -- })
 
   use({
     "nvim-telescope/telescope.nvim",
