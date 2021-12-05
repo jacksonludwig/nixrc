@@ -6,4 +6,8 @@
       export PATH=$PATH:~/.npm/bin
     '';
   };
+
+  home.file.".npmrc".text = ''
+    prefix=~/.npm
+  '';
 }
