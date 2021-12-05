@@ -39,6 +39,13 @@ require("packer").startup(function(use)
   })
 
   use({
+    "dkarter/bullets.vim",
+    config = function()
+      vim.g.bullets_enabled_file_types = { "markdown", "text", "gitcommit", "scratch" }
+    end,
+  })
+
+  use({
     "nvim-lualine/lualine.nvim",
     requires = { "arkav/lualine-lsp-progress" },
     config = function()
@@ -212,7 +219,7 @@ require("packer").startup(function(use)
           "bash",
           "comment",
           "typescript",
-          "javascript"
+          "javascript",
         },
         highlight = {
           enable = true,
