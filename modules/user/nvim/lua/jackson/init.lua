@@ -21,7 +21,6 @@ require("packer").startup(function(use)
 
   use({
     "tpope/vim-repeat",
-    "tpope/vim-commentary",
     "tpope/vim-fugitive",
     "tpope/vim-abolish",
     "tpope/vim-surround",
@@ -207,24 +206,34 @@ require("packer").startup(function(use)
         ensure_installed = {
           "c",
           "lua",
-          "rust",
           "python",
-          -- "typescript",
-          -- "javascript",
-          -- "tsx",
           "nix",
           "yaml",
           "bash",
           "comment",
+          "typescript",
+          "javascript"
         },
         highlight = {
           enable = true,
-          -- additional_vim_regex_highlighting = {
-          --   "javascript",
-          --   "javascriptreact",
-          --   "typescript",
-          --   "typescriptreact",
-          -- },
+          disable = { "javascript", "typescript" },
+        },
+      })
+    end,
+  })
+
+  use({
+    "numToStr/Comment.nvim",
+    requires = { "nvim-treesitter/nvim-treesitter" },
+    config = function()
+      require("Comment").setup({
+        opleader = {
+          line = "gc",
+          block = "gb",
+        },
+        mappings = {
+          basic = true,
+          extra = true,
         },
       })
     end,
