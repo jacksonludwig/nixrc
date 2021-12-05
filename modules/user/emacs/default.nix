@@ -10,5 +10,6 @@ in {
   home.file = {
     ".emacs.d/init.el".source = mkLink.to "${confRoot}/.emacs.d/init.el";
     ".emacs.d/custom.el".source = mkLink.to "${confRoot}/.emacs.d/custom.el";
+    ".emacs.d/early-init.el".source = mkLink.to "${confRoot}/.emacs.d/early-init.el";
   };
 }
