@@ -13,4 +13,8 @@
     vistafonts
     ranger
   ];
+
+  programs.bash.bashrcExtra = ''
+    alias rang="ranger"
+  '';
 }
