@@ -114,6 +114,9 @@ require("packer").startup(function(use)
           strings = "NONE",
           variables = "NONE",
         },
+        integrations = {
+          telescope = true,
+        },
       })
       vim.cmd("colorscheme catppuccin")
     end,
