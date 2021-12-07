@@ -4,12 +4,10 @@ let
   confRoot = "${modPath.user}/emacs";
 
 in {
-  #
   # Actual config files
-  #
   home.file = {
-    ".emacs.d/init.el".source = mkLink.to "${confRoot}/.emacs.d/init.el";
-    ".emacs.d/custom.el".source = mkLink.to "${confRoot}/.emacs.d/custom.el";
-    ".emacs.d/early-init.el".source = mkLink.to "${confRoot}/.emacs.d/early-init.el";
+    ".doom.d/init.el".source = mkLink.to "${confRoot}/.doom.d/init.el";
+    ".doom.d/config.el".source = mkLink.to "${confRoot}/.doom.d/config.el";
+    ".doom.d/packages.el".source = mkLink.to "${confRoot}/.doom.d/packages.el";
   };
 }

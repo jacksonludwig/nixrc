@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-21.11";
 
     home-manager = {
       url = "github:nix-community/home-manager/master";
@@ -71,10 +72,17 @@
           };
       };
 
+      # Use tsserver from nixpkgs stable (21.11)
+      typescriptOverlay = system:
+        (final: prev: {
+          typescript-language-server = (import inputs.nixpkgs-stable {
+            inherit system;
+          }).nodePackages.typescript-language-server;
+        });
+
       neovimOverlays =
         [ neovim-nightly-overlay.overlay telescope-fzf-native-overlay ];
-      langOverlays = system:
-        [ ]; # good candidates for this would be stuff like rust-overlay
+      langOverlays = system: [ (typescriptOverlay system) ];
       developmentOverlays = system: neovimOverlays ++ (langOverlays system);
 
       #

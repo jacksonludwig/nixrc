@@ -5,7 +5,7 @@ let
   confRoot = "${modPath.user}/nvim";
 
   languageServers = with pkgs; [
-    nodePackages.typescript-language-server
+    typescript-language-server
     nodePackages.vscode-langservers-extracted
     nodePackages.prettier
     nodePackages.yaml-language-server

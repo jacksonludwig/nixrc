@@ -130,12 +130,12 @@ require("packer").startup(function(use)
 
       telescope.setup({
         pickers = {
-          find_files = { disable_devicons = true },
-          buffers = { disable_devicons = true },
-          oldfiles = { disable_devicons = true },
-          grep_string = { disable_devicons = true },
-          live_grep = { disable_devicons = true },
-          file_browser = { disable_devicons = true },
+          find_files = { theme = "dropdown", disable_devicons = true },
+          buffers = { theme = "dropdown", disable_devicons = true },
+          oldfiles = { theme = "dropdown", disable_devicons = true },
+          grep_string = { theme = "dropdown", disable_devicons = true },
+          live_grep = { theme = "dropdown", disable_devicons = true },
+          file_browser = { theme = "dropdown", disable_devicons = true },
         },
         extensions = {
           fzf = {
