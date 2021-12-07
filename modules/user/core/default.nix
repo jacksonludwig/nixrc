@@ -11,5 +11,6 @@
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     iosevka
     vistafonts
+    ranger
   ];
 }
