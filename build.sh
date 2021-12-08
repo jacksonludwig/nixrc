@@ -2,5 +2,5 @@
 ./init-repo.sh
 nix-shell -p nixUnstable --command "nix build --experimental-features 'nix-command flakes' .#homeManagerConfigurations.'$1'.activationPackage"
 ./result/activate
-nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+# nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 printf "\n"
