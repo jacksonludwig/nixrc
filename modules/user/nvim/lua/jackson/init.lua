@@ -89,20 +89,6 @@ require("packer").startup(function(use)
     end,
   })
 
-  -- use({
-  --   "fnune/base16-vim",
-  --   branch = "41-zenburn-treesitter-highlight-are-missing",
-  --   config = function()
-  --     vim.cmd("colorscheme base16-zenburn")
-  --     vim.cmd([[
-  --       hi Normal guibg=#222222
-  --       hi LineNr guibg=#222222
-  --       hi SignColumn guibg=#222222
-  --       hi VertSplit guibg=bg
-  --     ]])
-  --   end,
-  -- })
-
   use({
     "catppuccin/nvim",
     config = function()
@@ -116,6 +102,7 @@ require("packer").startup(function(use)
         },
         integrations = {
           telescope = true,
+          cmp = true,
         },
       })
       vim.cmd("colorscheme catppuccin")
@@ -142,9 +129,9 @@ require("packer").startup(function(use)
         },
         extensions = {
           fzf = {
-            override_generic_sorter = true, -- override the generic sorter
-            override_file_sorter = true, -- override the file sorter
-            case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+            override_generic_sorter = true,
+            override_file_sorter = true,
+            case_mode = "smart_case",
           },
         },
       })
@@ -289,11 +276,11 @@ require("packer").startup(function(use)
         buf_set_keymap("n", "<leader>d", "<cmd>lua vim.diagnostic.open_float(nil, { scope='line' })<CR>", opts)
         buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev({ float = {} })<CR>", opts)
         buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next({ float = {} })<CR>", opts)
-        buf_set_keymap("n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
       end
 
-      local common_capabilities = vim.lsp.protocol.make_client_capabilities()
-      common_capabilities = require("cmp_nvim_lsp").update_capabilities(common_capabilities)
+      local common_capabilities = require("cmp_nvim_lsp").update_capabilities(
+        vim.lsp.protocol.make_client_capabilities()
+      )
 
       local null_ls = require("null-ls")
       null_ls.config({
