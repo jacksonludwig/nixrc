@@ -1,5 +1,4 @@
-{ config, pkgs, ... }:
-{
+{ config, pkgs, ... }: {
   users.users.jackson = {
     isNormalUser = true;
     isSystemUser = false;

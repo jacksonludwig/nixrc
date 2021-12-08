@@ -1,5 +1,4 @@
-{ pkgs, config, lib, linkConfig, modPath, ...}:
-{
+{ pkgs, config, lib, linkConfig, modPath, ... }: {
   programs.bash = {
     enable = true;
     bashrcExtra = ''

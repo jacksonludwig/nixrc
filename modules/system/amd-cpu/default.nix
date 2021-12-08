@@ -1,6 +1,3 @@
-{ pkgs, config, lib, ...}:
-{
-  environment.systemPackages = with pkgs; [
-    microcodeAmd
-  ];
+{ pkgs, config, lib, ... }: {
+  environment.systemPackages = with pkgs; [ microcodeAmd ];
 }
