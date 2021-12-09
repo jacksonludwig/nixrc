@@ -67,7 +67,7 @@ require("packer").startup(function(use)
               "lsp_progress",
               display_components = { "lsp_client_name", { "title", "percentage", "message" } },
             },
-            { "diagnostics", sources = { "nvim_lsp" }, colored = true },
+            { "diagnostics", sources = { "nvim_diagnostic" }, colored = true },
             "filetype",
             "progress",
             "location",
