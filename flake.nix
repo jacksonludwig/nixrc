@@ -116,7 +116,7 @@
         wsl = mkHMConf stdUser rec {
           system = "x86_64-linux";
           configuration = {
-            imports = coreModules ++ uMods [ "bashnonnixos" ];
+            imports = coreModules ++ uMods [ "kittynonnixos" "bashnonnixos" ];
             nixpkgs.overlays = (developmentOverlays system) ++ [ ];
           };
         };
