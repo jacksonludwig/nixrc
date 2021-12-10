@@ -102,6 +102,7 @@ require("packer").startup(function(use)
         },
         integrations = {
           telescope = true,
+          markdown = true,
           cmp = true,
         },
       })
