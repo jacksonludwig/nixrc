@@ -3,6 +3,7 @@
     enable = true;
     bashrcExtra = ''
       . ~/.oldbashrc
+      export NIXPKGS_ALLOW_UNFREE=1
     '';
     profileExtra = ''
       export XDG_DATA_DIRS=$HOME/.nix-profile/share''${XDG_DATA_DIRS:+:}$XDG_DATA_DIRS

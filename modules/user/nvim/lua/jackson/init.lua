@@ -21,7 +21,6 @@ require("packer").startup(function(use)
 
   use({
     "tpope/vim-repeat",
-    "tpope/vim-fugitive",
     "tpope/vim-abolish",
     "tpope/vim-surround",
   })
