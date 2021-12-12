@@ -438,12 +438,6 @@ require("packer").startup(function(use)
         signs = true,
         update_in_insert = false,
       })
-
-      require("dressing").setup({
-        input = {
-          winblend = 100,
-        },
-      })
     end,
   })
 
