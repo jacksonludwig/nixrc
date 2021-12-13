@@ -283,8 +283,8 @@ require("packer").startup(function(use)
       )
 
       local null_ls = require("null-ls")
-      null_ls.config({
-        save_after_format = false,
+
+      null_ls.setup({
         sources = {
           null_ls.builtins.formatting.prettier.with({
             filetypes = { "yaml", "json", "html", "css" },
@@ -302,9 +302,6 @@ require("packer").startup(function(use)
             filetypes = { "python" },
           }),
         },
-      })
-
-      nvim_lsp["null-ls"].setup({
         on_attach = function(_, bufnr)
           vim.api.nvim_buf_set_keymap(
             bufnr,
@@ -314,9 +311,6 @@ require("packer").startup(function(use)
             { noremap = true, silent = true }
           )
         end,
-        flags = {
-          debounce_text_changes = 200,
-        },
       })
 
       nvim_lsp.eslint.setup({
