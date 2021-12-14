@@ -210,6 +210,7 @@ require("packer").startup(function(use)
           "comment",
           "typescript",
           "javascript",
+          "markdown",
         },
         highlight = {
           enable = true,
