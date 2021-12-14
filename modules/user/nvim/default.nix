@@ -54,5 +54,6 @@ in {
     "nvim/coc/coc.vim".source = mkLink.to "${confRoot}/coc/coc.vim";
     "nvim/ftplugin/markdown.vim".source =
       mkLink.to "${confRoot}/ftplugin/markdown.vim";
+    "nvim/ftplugin/help.vim".source = mkLink.to "${confRoot}/ftplugin/help.vim";
   };
 }
