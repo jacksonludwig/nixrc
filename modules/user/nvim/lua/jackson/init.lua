@@ -125,7 +125,6 @@ require("packer").startup(function(use)
           oldfiles = { theme = "dropdown", disable_devicons = true },
           grep_string = { theme = "dropdown", disable_devicons = true },
           live_grep = { theme = "dropdown", disable_devicons = true },
-          file_browser = { theme = "dropdown", disable_devicons = true },
         },
         extensions = {
           fzf = {
@@ -166,12 +165,6 @@ require("packer").startup(function(use)
         "n",
         "<leader>g",
         "<cmd>lua require('telescope.builtin').live_grep()<cr>",
-        { noremap = true, silent = true }
-      )
-      vim.api.nvim_set_keymap(
-        "n",
-        "<leader>ff",
-        "<cmd>lua require('telescope.builtin').file_browser()<cr>",
         { noremap = true, silent = true }
       )
       vim.api.nvim_set_keymap(
