@@ -169,14 +169,8 @@ require("packer").startup(function(use)
       )
       vim.api.nvim_set_keymap(
         "n",
-        "<leader>sd",
-        "<cmd>lua require('telescope.builtin').lsp_document_diagnostics()<cr>",
-        { noremap = true, silent = true }
-      )
-      vim.api.nvim_set_keymap(
-        "n",
         "<leader>sw",
-        "<cmd>lua require('telescope.builtin').lsp_workspace_diagnostics()<cr>",
+        "<cmd>Telescope diagnostics<cr>",
         { noremap = true, silent = true }
       )
     end,
