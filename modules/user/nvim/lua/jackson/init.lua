@@ -235,7 +235,7 @@ require("packer").startup(function(use)
     config = function()
       local nvim_lsp = require("lspconfig")
 
-      local on_attach_common = function(client, bufnr)
+      local common_on_attach = function(client, bufnr)
         local function buf_set_keymap(...)
           vim.api.nvim_buf_set_keymap(bufnr, ...)
         end
@@ -330,7 +330,7 @@ require("packer").startup(function(use)
 
       nvim_lsp.tsserver.setup({
         on_attach = function(client, bufnr)
-          on_attach_common(client, bufnr)
+          common_on_attach(client, bufnr)
 
           local ts_utils = require("nvim-lsp-ts-utils")
 
@@ -355,7 +355,7 @@ require("packer").startup(function(use)
       })
 
       nvim_lsp.yamlls.setup({
-        on_attach = on_attach_common,
+        on_attach = common_on_attach,
         capabilities = common_capabilities,
         settings = {
           yaml = {
@@ -368,7 +368,7 @@ require("packer").startup(function(use)
       })
 
       nvim_lsp.pyright.setup({
-        on_attach = on_attach_common,
+        on_attach = common_on_attach,
         capabilities = common_capabilities,
         flags = {
           debounce_text_changes = 200,
@@ -376,7 +376,7 @@ require("packer").startup(function(use)
       })
 
       nvim_lsp.jsonls.setup({
-        on_attach = on_attach_common,
+        on_attach = common_on_attach,
         capabilities = common_capabilities,
         flags = {
           debounce_text_changes = 200,
@@ -389,7 +389,7 @@ require("packer").startup(function(use)
 
       nvim_lsp.sumneko_lua.setup({
         cmd = { "lua-language-server" },
-        on_attach = on_attach_common,
+        on_attach = common_on_attach,
         capabilities = common_capabilities,
         settings = {
           Lua = {
