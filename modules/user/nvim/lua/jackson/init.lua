@@ -32,9 +32,6 @@ require("packer").startup(function(use)
 
   use({
     "chemzqm/vim-jsx-improve",
-    config = function()
-      vim.cmd("autocmd FileType javascript set filetype=javascriptreact")
-    end,
   })
 
   use({
