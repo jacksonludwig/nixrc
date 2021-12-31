@@ -380,6 +380,14 @@ require("packer").startup(function(use)
         },
       })
 
+      nvim_lsp.clangd.setup({
+        on_attach = common_on_attach,
+        capabilities = common_capabilities,
+        flags = {
+          debounce_text_changes = 200,
+        },
+      })
+
       local runtime_path = vim.split(package.path, ";")
       table.insert(runtime_path, "lua/?.lua")
       table.insert(runtime_path, "lua/?/init.lua")

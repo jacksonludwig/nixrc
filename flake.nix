@@ -62,7 +62,7 @@
 
       # Terminal needs for every machine.
       coreModules = uMods [ "core" "dev-tools" "nvim" "tmux" "emacs" ]
-        ++ langMods [ "python" "js" ];
+        ++ langMods [ "python" "js" "c" ];
 
       # Currently scuffed sadsad
       telescope-fzf-native-overlay = final: prev: {
