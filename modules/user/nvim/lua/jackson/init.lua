@@ -377,7 +377,18 @@ require("packer").startup(function(use)
       })
 
       nvim_lsp.clangd.setup({
-        on_attach = common_on_attach,
+        on_attach = function(client, bufnr)
+          common_on_attach(client, bufnr)
+
+          client.resolved_capabilities.document_formatting = true
+          vim.api.nvim_buf_set_keymap(
+            bufnr,
+            "n",
+            "<leader>z",
+            "<cmd>lua vim.lsp.buf.formatting()<CR>",
+            { noremap = true, silent = true }
+          )
+        end,
         capabilities = common_capabilities,
         flags = {
           debounce_text_changes = 200,
