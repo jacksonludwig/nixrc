@@ -87,6 +87,7 @@ require("packer").startup(function(use)
 
   use({
     "catppuccin/nvim",
+    as = "catpuccin",
     config = function()
       require("catppuccin").setup({
         styles = {
@@ -164,12 +165,7 @@ require("packer").startup(function(use)
         "<cmd>lua require('telescope.builtin').live_grep()<cr>",
         { noremap = true, silent = true }
       )
-      vim.api.nvim_set_keymap(
-        "n",
-        "<leader>sw",
-        "<cmd>Telescope diagnostics<cr>",
-        { noremap = true, silent = true }
-      )
+      vim.api.nvim_set_keymap("n", "<leader>sw", "<cmd>Telescope diagnostics<cr>", { noremap = true, silent = true })
     end,
   })
 
