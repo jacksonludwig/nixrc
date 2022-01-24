@@ -49,7 +49,6 @@
         user = "modules/user"; # For user-specific configs
         lang = "modules/user/langs"; # For programming-language-specific configs
         system = "modules/system"; # For system-wide configs
-        # ^^^^ usually firmware/driver/hardware-related.
       };
 
       # This (./. + "path") is the only way to get nix to not complain about
@@ -61,7 +60,7 @@
       sysMods = modList: toMods "system" modList;
 
       # Terminal needs for every machine.
-      coreModules = uMods [ "core" "dev-tools" "nvim" "tmux" "emacs" ]
+      coreModules = uMods [ "core" "dev-tools" "nvim" "tmux" ]
         ++ langMods [ "python" "js" "c" ];
 
       # Currently scuffed sadsad
@@ -85,9 +84,7 @@
       langOverlays = system: [ (typescriptOverlay system) ];
       developmentOverlays = system: neovimOverlays ++ (langOverlays system);
 
-      #
-      # Defaults: change these as you'd like.
-      #
+      # Defaults
       stdUser = meta.username;
 
       hmConfDefaults = rec {
@@ -102,9 +99,7 @@
         };
       };
 
-      #
-      # We want to actually define our configs with this function.
-      #
+      # define configs with this function
       mkHMConf = user: attrs:
         home-manager.lib.homeManagerConfiguration (hmConfDefaults // {
           username = user;
@@ -138,7 +133,7 @@
         };
       };
 
-      # System configurations
+      # System configurations (nixos)
       nixosConfigurations = {
         nixosdesktop = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";

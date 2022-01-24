@@ -26,12 +26,18 @@ require("packer").startup(function(use)
   })
 
   use({
-    "LnL7/vim-nix",
-    ft = { "nix" },
-  })
-
-  use({
-    "chemzqm/vim-jsx-improve",
+    {
+      "elixir-editors/vim-elixir",
+      ft = { "elixir" },
+    },
+    {
+      "LnL7/vim-nix",
+      ft = {"nix"},
+    },
+    {
+      "chemzqm/vim-jsx-improve",
+      ft = { "javascriptreact" },
+    },
   })
 
   use({
@@ -39,6 +45,10 @@ require("packer").startup(function(use)
     config = function()
       vim.g.bullets_enabled_file_types = { "markdown", "text", "gitcommit", "scratch" }
     end,
+  })
+
+  use({
+    "elihunter173/dirbuf.nvim",
   })
 
   use({
@@ -111,18 +121,19 @@ require("packer").startup(function(use)
     "nvim-telescope/telescope.nvim",
     requires = {
       "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope-fzf-native.nvim",
+      { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
     },
     config = function()
       local telescope = require("telescope")
+      local opts = { theme = "dropdown", disable_devicons = true }
 
       telescope.setup({
         pickers = {
-          find_files = { theme = "dropdown", disable_devicons = true },
-          buffers = { theme = "dropdown", disable_devicons = true },
-          oldfiles = { theme = "dropdown", disable_devicons = true },
-          grep_string = { theme = "dropdown", disable_devicons = true },
-          live_grep = { theme = "dropdown", disable_devicons = true },
+          find_files = opts,
+          buffers = opts,
+          oldfiles = opts,
+          grep_string = opts,
+          live_grep = opts,
         },
         extensions = {
           fzf = {
@@ -185,17 +196,17 @@ require("packer").startup(function(use)
           "c",
           "lua",
           "python",
-          "nix",
           "yaml",
           "bash",
           "comment",
           "typescript",
           "javascript",
+          "tsx",
           "markdown",
         },
         highlight = {
           enable = true,
-          disable = { "javascript", "typescript" },
+          disable = { "javascript", "typescript", "tsx" },
         },
       })
     end,
@@ -223,7 +234,6 @@ require("packer").startup(function(use)
     requires = {
       "jose-elias-alvarez/nvim-lsp-ts-utils",
       "jose-elias-alvarez/null-ls.nvim",
-      "stevearc/dressing.nvim",
     },
     config = function()
       local nvim_lsp = require("lspconfig")
@@ -264,6 +274,16 @@ require("packer").startup(function(use)
         vim.lsp.protocol.make_client_capabilities()
       )
 
+      local bind_lsp_format = function(bufnr)
+        vim.api.nvim_buf_set_keymap(
+          bufnr,
+          "n",
+          "<leader>z",
+          "<cmd>lua vim.lsp.buf.formatting()<CR>",
+          { noremap = true, silent = true }
+        )
+      end
+
       local null_ls = require("null-ls")
 
       null_ls.setup({
@@ -274,8 +294,8 @@ require("packer").startup(function(use)
           null_ls.builtins.formatting.stylua.with({
             filetypes = { "lua" },
           }),
-          null_ls.builtins.formatting.nixfmt.with({
-            filetypes = { "nix" },
+          null_ls.builtins.formatting.gofmt.with({
+            filetypes = { "go" },
           }),
           null_ls.builtins.formatting.black.with({
             filetypes = { "python" },
@@ -285,13 +305,7 @@ require("packer").startup(function(use)
           }),
         },
         on_attach = function(_, bufnr)
-          vim.api.nvim_buf_set_keymap(
-            bufnr,
-            "n",
-            "<leader>z",
-            "<cmd>lua vim.lsp.buf.formatting()<CR>",
-            { noremap = true, silent = true }
-          )
+          bind_lsp_format(bufnr)
         end,
       })
 
@@ -376,20 +390,43 @@ require("packer").startup(function(use)
         },
       })
 
+      nvim_lsp.gopls.setup({
+        on_attach = common_on_attach,
+        capabilities = common_capabilities,
+        flags = {
+          debounce_text_changes = 200,
+        },
+      })
+
       nvim_lsp.clangd.setup({
         on_attach = function(client, bufnr)
           common_on_attach(client, bufnr)
 
           client.resolved_capabilities.document_formatting = true
-          vim.api.nvim_buf_set_keymap(
-            bufnr,
-            "n",
-            "<leader>z",
-            "<cmd>lua vim.lsp.buf.formatting()<CR>",
-            { noremap = true, silent = true }
-          )
+          bind_lsp_format(bufnr)
         end,
         capabilities = common_capabilities,
+        flags = {
+          debounce_text_changes = 200,
+        },
+      })
+
+      local path_to_elixirls = vim.fn.expand("~/.local/bin/elixirls/language_server.sh")
+      nvim_lsp.elixirls.setup({
+        cmd = { path_to_elixirls },
+        on_attach = function(client, bufnr)
+          common_on_attach(client, bufnr)
+
+          client.resolved_capabilities.document_formatting = true
+          bind_lsp_format(bufnr)
+        end,
+        capabilities = common_capabilities,
+        settings = {
+          elixirLS = {
+            dialyzerEnabled = false,
+            fetchDeps = false,
+          },
+        },
         flags = {
           debounce_text_changes = 200,
         },
@@ -508,6 +545,15 @@ augroup YankHighlight
   autocmd!
   autocmd TextYankPost * silent! lua vim.highlight.on_yank()
 augroup end
+]])
+
+vim.cmd([[
+  augroup GoIndents
+    autocmd!
+    autocmd FileType go setlocal tabstop=2
+    autocmd FileType go setlocal noexpandtab
+    autocmd FileType go setlocal shiftwidth=2
+  augroup end
 ]])
 
 -- mappings
